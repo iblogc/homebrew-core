@@ -1,17 +1,17 @@
 class Pueue < Formula
   desc "Command-line tool for managing long-running shell commands"
   homepage "https://github.com/Nukesor/pueue"
-  url "https://github.com/Nukesor/pueue/archive/v0.12.2.tar.gz"
-  sha256 "3acd923759d5731b69a9a4a16c83c16a1f33589767da2ab7eb0cbe49ea06eabd"
+  url "https://github.com/Nukesor/pueue/archive/v1.0.3.tar.gz"
+  sha256 "eb20da7425fab406ea33322aa6b248c350eca631b8e23f2fc2ee80c1505e439e"
   license "MIT"
-  head "https://github.com/Nukesor/pueue.git"
+  head "https://github.com/Nukesor/pueue.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "a4d2d1c08cf929b069e09aafc633f2d6190f9fc72db7af1a528849c3d96617dd"
-    sha256 cellar: :any_skip_relocation, big_sur:       "2602ff719f66993515cd06408672f4f91c5b79326635688af2f693592e7da447"
-    sha256 cellar: :any_skip_relocation, catalina:      "509da33221a8f04f7bfd9c30dd92b3a1c33e5b28be5f7d8d548a8ce9eea14c5a"
-    sha256 cellar: :any_skip_relocation, mojave:        "2813f83c83e78449efd26656232c4a1745f8f6bca2e97e8eb4e9c45c897747d4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "562509ca4c24f7838ddacc320018b634c7446a85259317a9417cc110549046f0"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "7692235fe220741fc6115a693800efd25baa1f4d250a96f619ff9f0ef599c27e"
+    sha256 cellar: :any_skip_relocation, big_sur:       "498485e3aa3ff6562d4f79509426e744d4061cc8b5f936838a17a4c99b2ac350"
+    sha256 cellar: :any_skip_relocation, catalina:      "43ad1d2ee2c78e402b1fcdb8e94dd49eab29d30b7fa31f704ab046394938ad88"
+    sha256 cellar: :any_skip_relocation, mojave:        "28ff30dd5c01a9acbc060cc544ca35b73e7cabb4428723022ff78ffba02197a9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "aae3d2c4545c4121faa1e7c9bc194d6b2aacea045751095cdd487ab6b9f8f0f0"
   end
 
   depends_on "rust" => :build

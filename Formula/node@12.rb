@@ -1,8 +1,8 @@
 class NodeAT12 < Formula
   desc "Platform built on V8 to build network applications"
   homepage "https://nodejs.org/"
-  url "https://nodejs.org/dist/v12.22.4/node-v12.22.4.tar.gz"
-  sha256 "613b5a895d85d72b4aa495bdf0ffa483ad8b33635a173c4beb94d2842db740f5"
+  url "https://nodejs.org/dist/v12.22.6/node-v12.22.6.tar.gz"
+  sha256 "02763dcf6532a997143b03c1f7d23552a3bd19ddcad1fd2425956db7596cbc9c"
   license "MIT"
 
   livecheck do
@@ -11,11 +11,11 @@ class NodeAT12 < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_big_sur: "8bc4096ea4cb6b71f611df989092fee053a91f50c67f11871420d2e70194da7c"
-    sha256 cellar: :any,                 big_sur:       "57553159a9532200cc460a9a0fe4446f85befbaae7762e5ff905953ca89942b4"
-    sha256 cellar: :any,                 catalina:      "ffad227d4604309efe90e3d1fe998721957fe610c8b9722a5d49feca31484c52"
-    sha256 cellar: :any,                 mojave:        "dfc114139b1ef6d3560f34ac373470d75f1a47be7369c60778be9e75da37e3f3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "537de64f5452e84886f33191cb809404c51e3db3e335b07238a0efd768322e7e"
+    sha256 cellar: :any,                 arm64_big_sur: "d3010f414ec59c92041a1035bfeea9dd08cd6cc472b1fd1394f4447902eb63c6"
+    sha256 cellar: :any,                 big_sur:       "caf8395437c1c70c12285eac366ef5e1f03db9c0b5640242156591c45ddfeffb"
+    sha256 cellar: :any,                 catalina:      "b86fe87aa75996f8739e87ffe6d021ba5f9d04868dc664e353eb02c7c43a7b92"
+    sha256 cellar: :any,                 mojave:        "00b0f21bbb02df305c4536022f0ded5564eb9b783946516b9d961428ebd7b5aa"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3671baccbe7dafa45d35cfff1991fa89a1fa70555ff1c04073d72fa6cc43038f"
   end
 
   keg_only :versioned_formula
@@ -38,7 +38,7 @@ class NodeAT12 < Formula
     term_size_vendor_dir = lib/"node_modules/npm/node_modules/term-size/vendor"
     term_size_vendor_dir.rmtree # remove pre-built binaries
 
-    on_macos do
+    if OS.mac?
       macos_dir = term_size_vendor_dir/"macos"
       macos_dir.mkpath
       # Replace the vendored pre-built term-size with one we build ourselves

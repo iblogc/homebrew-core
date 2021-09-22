@@ -2,8 +2,8 @@ class Tanka < Formula
   desc "Flexible, reusable and concise configuration for Kubernetes using Jsonnet"
   homepage "https://tanka.dev"
   url "https://github.com/grafana/tanka.git",
-      tag:      "v0.17.1",
-      revision: "3bc0931b899432ab1e9edcff9c4e81a1bd3250b7"
+      tag:      "v0.17.3",
+      revision: "8b680de501685b534efba32a07dea408454bb73b"
   license "Apache-2.0"
   head "https://github.com/grafana/tanka.git", branch: "main"
 
@@ -13,11 +13,11 @@ class Tanka < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "2b86b36181477f257de520c2ca5821956ceee71935f103f59990906a97c120db"
-    sha256 cellar: :any_skip_relocation, big_sur:       "f8f898d15e1ccb7b5dd8c3d3130d18e6e71e7acf80e9a5d167c812422bae00a2"
-    sha256 cellar: :any_skip_relocation, catalina:      "9880ec02a1ca51c6e3bc1213187f3b2ae80bccbcaae0493be3c89424958f7b93"
-    sha256 cellar: :any_skip_relocation, mojave:        "49f9924c88518aadd7c6ec253fb35aa4f0e05ec506db70fa1b3ce656b47713f3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dfd3ca68939e084bf40ff34aa09b58ed2089a7a9e3111ba9a0b389ac7598a653"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "ec250c0238fa90d722aee8fab529e75ab9bfe19a3ca88436a2159b7c0443fe1b"
+    sha256 cellar: :any_skip_relocation, big_sur:       "5aa62b8e02f94262f35e05624eee0bdb5fc615baa74a3865f4a8ba98c1b4065d"
+    sha256 cellar: :any_skip_relocation, catalina:      "d50845c84a6cc562ecbe48d041b1953e645e4d2eeb80a2bd25788bc79e26ef3a"
+    sha256 cellar: :any_skip_relocation, mojave:        "b0adaab9a8ad7a79edbfcd96e14c69f5cf34e94259e67a874c8df5fb917e9971"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "26572efc411e7aca443a2eebff7ee346cb566e82bc3798d689e63cf77993040a"
   end
 
   depends_on "go" => :build

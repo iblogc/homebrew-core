@@ -4,7 +4,7 @@ class Babeld < Formula
   url "https://www.irif.fr/~jch/software/files/babeld-1.10.tar.gz"
   sha256 "a5f54a08322640e97399bf4d1411a34319e6e277fbb6fc4966f38a17d72a8dea"
   license "MIT"
-  head "https://github.com/jech/babeld.git"
+  head "https://github.com/jech/babeld.git", branch: "master"
 
   livecheck do
     url "https://www.irif.fr/~jch/software/files/"
@@ -20,11 +20,10 @@ class Babeld < Formula
   end
 
   def install
-    on_macos do
+    if OS.mac?
       # LDLIBS='' fixes: ld: library not found for -lrt
       system "make", "LDLIBS=''"
-    end
-    on_linux do
+    else
       system "make"
     end
     system "make", "install", "PREFIX=#{prefix}"

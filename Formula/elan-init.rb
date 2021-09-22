@@ -1,15 +1,16 @@
 class ElanInit < Formula
   desc "Lean Theorem Prover installer and version manager"
   homepage "https://github.com/leanprover/elan"
-  url "https://github.com/leanprover/elan/archive/v1.0.6.tar.gz"
-  sha256 "f8865e3ab035a285173ced40024769f6b7149dc7b556c5cf3bd0d0cdc6528197"
+  url "https://github.com/leanprover/elan/archive/v1.0.8.tar.gz"
+  sha256 "fe93983c46ee83bc09e99b1cbd147f2ba4ad6fdda45ef3a57d386d9a84c8cc67"
   license "Apache-2.0"
   head "https://github.com/leanprover/elan.git"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, big_sur:  "d6bb68e6a6c0c5f5d6dfb0495e7454373d0fec561e4606ddb6865edd255eb3c5"
-    sha256 cellar: :any_skip_relocation, catalina: "e1f9cc59ffd3e2c3e7c37c1b78dade5179e823bc1f0470b34d52b59d7b677511"
-    sha256 cellar: :any_skip_relocation, mojave:   "d3d8c87d4f4a10373603106d9ec5ec8a8675f19eae1ebc063c354a75f08cb8ad"
+    sha256 cellar: :any_skip_relocation, big_sur:      "604903f0051ca238f3662d6376fd3855b105e24f62c654162deffe4a8a5fe1c7"
+    sha256 cellar: :any_skip_relocation, catalina:     "bd3940e048f0ad924e5c103201f61b38685ba56b180fb987599b05e76e43b8b7"
+    sha256 cellar: :any_skip_relocation, mojave:       "66da7b0f67a5a8a134e7fa9062003ebfe3f4369f8f1750e476c75041e55769a6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "04f452ebcaea14335dfcaa28701bd71cf9d95b189fb842df5e8f6897413dc732"
   end
 
   depends_on "rust" => :build
@@ -17,6 +18,8 @@ class ElanInit < Formula
   depends_on arch: :x86_64
   depends_on "coreutils"
   depends_on "gmp"
+
+  uses_from_macos "zlib"
 
   conflicts_with "lean", because: "`lean` and `elan-init` install the same binaries"
 

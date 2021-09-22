@@ -1,11 +1,11 @@
 class UniversalCtags < Formula
   desc "Maintained ctags implementation"
   homepage "https://github.com/universal-ctags/ctags"
-  url "https://github.com/universal-ctags/ctags/archive/refs/tags/p5.9.20210801.0.tar.gz"
-  version "p5.9.20210801.0"
-  sha256 "779248492b86bb8bfaf0b12f4e53c5032e9324f70542378c8863ef5bac2770bf"
+  url "https://github.com/universal-ctags/ctags/archive/refs/tags/p5.9.20210919.0.tar.gz"
+  version "p5.9.20210919.0"
+  sha256 "56d8e6958135a0fbde7dc7ba607adc129053e3d95663d79e4b39e5860d440422"
   license "GPL-2.0-only"
-  head "https://github.com/universal-ctags/ctags.git"
+  head "https://github.com/universal-ctags/ctags.git", branch: "master"
 
   livecheck do
     url :stable
@@ -13,11 +13,11 @@ class UniversalCtags < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_big_sur: "bbb9c2c7f000943417698890413e5e27ae47278b8fa3a78356ba69d6a282e77a"
-    sha256 cellar: :any,                 big_sur:       "73de142ba12e183df82bcc1021c2f72df55ffa14cfb6eeca8437773a84cc8794"
-    sha256 cellar: :any,                 catalina:      "9e963df4bfc0f1150e1ffa8b56c9615888cacbfe88190aa5cf6fbec88f5f89cf"
-    sha256 cellar: :any,                 mojave:        "3357ab44cedf0448b2deabff900e1e133cb998e3d48f85ef72a213fb57fec3ae"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "25f45d1fc938be7f20fe11e53e2d418666bc714f5433ae6b01cfcf305ba7e25d"
+    sha256 cellar: :any,                 arm64_big_sur: "c589446817aac504079f1254a8a7e5bedafc78fd56631ceaeef5123a389bf83c"
+    sha256 cellar: :any,                 big_sur:       "2b5352cf0a743cc2dc98dd6fcc65ce2b5bb09fe3b25bcfbae4bacd4b7a27864f"
+    sha256 cellar: :any,                 catalina:      "fd8972db2289c874b8ad1a5e1db6aef61bdefb5c5b3346093d196ab813b114aa"
+    sha256 cellar: :any,                 mojave:        "8cbca9015282eb559eb94fcb13461ae6146eb36caee6060e0aa31b099867f37c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9e07e9d7cd18fedf05b2a4e809b4215405cbaa269dd69cd79ce9e009b7b8dc25"
   end
 
   depends_on "autoconf" => :build

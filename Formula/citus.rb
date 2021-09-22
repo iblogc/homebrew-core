@@ -1,16 +1,16 @@
 class Citus < Formula
   desc "PostgreSQL-based distributed RDBMS"
   homepage "https://www.citusdata.com"
-  url "https://github.com/citusdata/citus/archive/v10.1.1.tar.gz"
-  sha256 "2494184d6ac7a6b66bb2380daf4abc616c931d33737179dbaca64c9760542187"
+  url "https://github.com/citusdata/citus/archive/v10.2.0.tar.gz"
+  sha256 "ec172e09d2569c09c09ccaf091a50646937eee830b0af0315750c1aab2ef0cc5"
   license "AGPL-3.0-only"
-  head "https://github.com/citusdata/citus.git"
+  head "https://github.com/citusdata/citus.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any, arm64_big_sur: "55ca70957f451ac2e369b83d09f2e381a3d474a7963d0f4fa062f2b184d1563a"
-    sha256 cellar: :any, big_sur:       "ddb0ea0a2af6fa10982bec99201ad024338fa49d7151924ae4b303a18c01de1b"
-    sha256 cellar: :any, catalina:      "c2db86947e92a6bea0025aa43ffc22cba47fc5920beb4461efd38604e8d4e00f"
-    sha256 cellar: :any, mojave:        "4fe4630cbd313aea0a3f1c4c5dd7ce1d6c0a01fc4afb37a5453a2e9a35c174a0"
+    sha256 cellar: :any, arm64_big_sur: "aa4d9d13a6a6c86d7b6ff411ecde3a366a8ed492f22dd615ec065e31fc58c47f"
+    sha256 cellar: :any, big_sur:       "9a7f4ae0ade23ee3cd055488e3611c9b34a9e91e5745f0cb3ddcbacf39851c38"
+    sha256 cellar: :any, catalina:      "8b15dc9cdf4330d2d23790deb7091db586ec1d1f802588e32e6f6c91a452f15a"
+    sha256 cellar: :any, mojave:        "4c4749e1c83a4cc26c172d72e6aac888ef8fa0df31e1aadb96530ef59a0d4504"
   end
 
   depends_on "lz4"

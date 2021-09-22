@@ -4,7 +4,7 @@ class Boost < Formula
   url "https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.bz2"
   sha256 "f0397ba6e982c4450f27bf32a2a83292aba035b827a5623a14636ea583318c41"
   license "BSL-1.0"
-  head "https://github.com/boostorg/boost.git"
+  head "https://github.com/boostorg/boost.git", branch: "master"
 
   livecheck do
     url "https://www.boost.org/users/download/"
@@ -30,10 +30,9 @@ class Boost < Formula
   def install
     # Force boost to compile with the desired compiler
     open("user-config.jam", "a") do |file|
-      on_macos do
+      if OS.mac?
         file.write "using darwin : : #{ENV.cxx} ;\n"
-      end
-      on_linux do
+      else
         file.write "using gcc : : #{ENV.cxx} ;\n"
       end
     end

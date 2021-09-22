@@ -1,16 +1,16 @@
 class Scorecard < Formula
   desc "Security health metrics for Open Source"
   homepage "https://github.com/ossf/scorecard"
-  url "https://github.com/ossf/scorecard/archive/refs/tags/v2.1.2.tar.gz"
-  sha256 "74cce8c0f27a1d5c473172c89e86ab90b290c016b2b7dae7c99dbf65f9d0fb03"
+  url "https://github.com/ossf/scorecard/archive/v2.2.3.tar.gz"
+  sha256 "4d67321b4cfffd177c3be140b6db058c716a77c433f0cfb590a0f4b4505ca34a"
   license "Apache-2.0"
   head "https://github.com/ossf/scorecard.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "4efa42c4c74742fe81374d95061f5f5e7b404f3047bac5680f000e072f1d403c"
-    sha256 cellar: :any_skip_relocation, big_sur:       "3f719c911485669ddae5bef55f0bf2b50d4c858e89a58f28c2a72cc65150207e"
-    sha256 cellar: :any_skip_relocation, catalina:      "fa47bdb149664505804b1d51d7ef8a65f99fe67e44cc29c003d6406c8d605b1e"
-    sha256 cellar: :any_skip_relocation, mojave:        "f49477d3f8ffd800c41418f40d1aeea25628a957de2466e368f6e1a02ca5d86c"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "5da415011016cfb91dc1a79b88084816c39587f4fb4a13f5114ac9eb785e02c3"
+    sha256 cellar: :any_skip_relocation, big_sur:       "e2ccd6165992021a8112c06e6279508e987a0c2fd10fb5cd37c25bcbb1100ae4"
+    sha256 cellar: :any_skip_relocation, catalina:      "839b5e8df85392171efe2977fcebfdcf61b808160f5b44731a7d767cb6c9f621"
+    sha256 cellar: :any_skip_relocation, mojave:        "d3a252430c02e42ca2efa3011e367e3013911a33c43bab6257db112aeb3987b1"
   end
 
   depends_on "go" => :build
@@ -23,7 +23,7 @@ class Scorecard < Formula
 
   test do
     ENV["GITHUB_AUTH_TOKEN"] = "test"
-    output = shell_output("#{bin}/scorecard --repo=github.com/kubernetes/kubernetes --checks=Active 2>&1", 1)
+    output = shell_output("#{bin}/scorecard --repo=github.com/kubernetes/kubernetes --checks=Maintained 2>&1", 1)
     assert_match "GET https://api.github.com/repos/kubernetes/kubernetes: 401 Bad credentials", output
   end
 end

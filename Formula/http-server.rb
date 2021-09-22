@@ -3,13 +3,13 @@ require "language/node"
 class HttpServer < Formula
   desc "Simple zero-configuration command-line HTTP server"
   homepage "https://github.com/http-party/http-server"
-  url "https://registry.npmjs.org/http-server/-/http-server-13.0.0.tgz"
-  sha256 "325efc8e97e991840e7161f42cbafc9103f967f57b5fc014659974a9c36adb48"
+  url "https://registry.npmjs.org/http-server/-/http-server-13.0.2.tgz"
+  sha256 "4a3921cfe0712379c85b7cdd65ffb95eee3c435ed76d5f48b3d1c72bfc2c6714"
   license "MIT"
   head "https://github.com/http-party/http-server.git"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "4f754a7268fe26f330053fbf3b15aa00e99f01e05c4691f3f54c1e5902f46955"
+    sha256 cellar: :any_skip_relocation, all: "acc77203811de4c980baa662d356213361c567a08f66bf0eaef620bdcc9b2980"
   end
 
   depends_on "node"

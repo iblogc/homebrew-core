@@ -1,17 +1,17 @@
 class GoogleBenchmark < Formula
   desc "C++ microbenchmark support library"
   homepage "https://github.com/google/benchmark"
-  url "https://github.com/google/benchmark/archive/v1.5.5.tar.gz"
-  sha256 "3bff5f237c317ddfd8d5a9b96b3eede7c0802e799db520d38ce756a2a46a18a0"
+  url "https://github.com/google/benchmark/archive/v1.6.0.tar.gz"
+  sha256 "1f71c72ce08d2c1310011ea6436b31e39ccab8c2db94186d26657d41747c85d6"
   license "Apache-2.0"
   head "https://github.com/google/benchmark.git"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "7bc5b628badef224d2d38b09c0377a0be6c1e99c801b04c936c2eb2c6e29b5d4"
-    sha256 cellar: :any_skip_relocation, big_sur:       "261bdc680fff541ab76c925e8b341ed32b74e541c5e47e3acc6d51a880d3bac2"
-    sha256 cellar: :any_skip_relocation, catalina:      "522669df4933866790f71fdb233af934c3ed2c3ad40ea7b1aa3c0c6aec3d7c3a"
-    sha256 cellar: :any_skip_relocation, mojave:        "dbc6f828f0efa63470d1d1da080efc890c6ce5150a839d2e025ba531de867028"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ae263220822efad866da227bbf2209bf709f8b33a8bfebb313392c55f8924c51"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "9ac2ad887a8ab80ef3f35f1649eea685fef772b3997d22571dd4079b0cbdaaac"
+    sha256 cellar: :any_skip_relocation, big_sur:       "51f30b3d6cc75e55817edf118fb3e3ff26326a6fda89ddfe825cc7ee14b0466f"
+    sha256 cellar: :any_skip_relocation, catalina:      "2bf63b419594d52b6bfd2a3a70bc972e8854a25df324de1fe9767dc3afd43b01"
+    sha256 cellar: :any_skip_relocation, mojave:        "2f53d7a2fb5622dc85f1d6fc08086395ea464b7ec538059b9b8b8d37e8b9bc0a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "eadb938649288a88f2e7f16cc78f27385c197aa72786de75d2d70a65b5861820"
   end
 
   depends_on "cmake" => :build

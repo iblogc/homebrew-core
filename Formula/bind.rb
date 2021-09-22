@@ -8,11 +8,11 @@ class Bind < Formula
   # "version_scheme" because someone upgraded to 9.15.0, and required a
   # downgrade.
 
-  url "https://downloads.isc.org/isc/bind9/9.16.19/bind-9.16.19.tar.xz"
-  sha256 "20bf727559302c933475904847041916bb6c279680c170babc01a76998e80ad3"
+  url "https://downloads.isc.org/isc/bind9/9.16.21/bind-9.16.21.tar.xz"
+  sha256 "65da5fd4fb80b7d0d7452876f81fd6d67cdcee54a5e3c1d65610334665dfa815"
   license "MPL-2.0"
   version_scheme 1
-  head "https://gitlab.isc.org/isc-projects/bind9.git"
+  head "https://gitlab.isc.org/isc-projects/bind9.git", branch: "main"
 
   # BIND indicates stable releases with an even-numbered minor (e.g., x.2.x)
   # and the regex below only matches these versions.
@@ -22,11 +22,11 @@ class Bind < Formula
   end
 
   bottle do
-    sha256 arm64_big_sur: "e902ad6a130f6e5d83fb1d25ac8e8104024a16fcdc82e72ef3461f6624e3433a"
-    sha256 big_sur:       "9cd29c57a9ddc16b18690bb4334af3d1e960f2ca1b7579f26270295aa3136b7b"
-    sha256 catalina:      "f91c6e280b12f36d2a6579f7819213a8bdcb245cf3ed4485bb14c01c1dd4d261"
-    sha256 mojave:        "438cf2980919b97faf763445dd86024c67309ea113428467ec8c22e851cc3ba2"
-    sha256 x86_64_linux:  "3def6f6a1bbfa75cb7136aa0c3f2756270841a5fe7279d350abb3225a32cfcab"
+    sha256 arm64_big_sur: "0e6cecbb71ddcb001ca4d7834f5c871fe0a2f66cd8bd308b786fca571dfed0ea"
+    sha256 big_sur:       "371d94feb300866304505caf0bf343a3dee0b7952a7b57055634a611c5c39cd0"
+    sha256 catalina:      "3cfd01171bb2bee9e99324c8d80a8a3b0a41383df106fc56598b28a786cd2b73"
+    sha256 mojave:        "342673b8dfaa2940d44e6d359035625cb674bd3021b171b79b204cd78215de1f"
+    sha256 x86_64_linux:  "15f21773cdbb8a17e7efa8eaf2e5802762b8128e121f4dabed79487175f56d70"
   end
 
   depends_on "pkg-config" => :build
@@ -65,9 +65,7 @@ class Bind < Formula
       "--without-lmdb",
       "--with-libidn2=#{Formula["libidn2"].opt_prefix}",
     ]
-    on_linux do
-      args << "--disable-linux-caps"
-    end
+    args << "--disable-linux-caps" if OS.linux?
     system "./configure", *args
 
     system "make"

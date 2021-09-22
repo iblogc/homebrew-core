@@ -1,8 +1,8 @@
 class Gegl < Formula
   desc "Graph based image processing framework"
   homepage "https://www.gegl.org/"
-  url "https://download.gimp.org/pub/gegl/0.4/gegl-0.4.30.tar.xz"
-  sha256 "c112782cf4096969e23217ccdfabe42284e35d5435ff0c43d40e4c70faeca8dd"
+  url "https://download.gimp.org/pub/gegl/0.4/gegl-0.4.32.tar.xz"
+  sha256 "668e3c6b9faf75fb00512701c36274ab6f22a8ba05ec62dbf187d34b8d298fa1"
   license all_of: ["LGPL-3.0-or-later", "GPL-3.0-or-later", "BSD-3-Clause", "MIT"]
   head "https://gitlab.gnome.org/GNOME/gegl.git"
 
@@ -12,12 +12,11 @@ class Gegl < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 arm64_big_sur: "0f3cc4cd71d7614871efd0b33f94717cb34df3305e0b5b83317516fe67df857c"
-    sha256 big_sur:       "eedaaa6ecd792ab4bb261a7e9cbce4aaff9ee88a94996170b440fae6288c5440"
-    sha256 catalina:      "df877db7d35be4bfac5b6e59f6ecdebe11c4e4fc4625e866ca84597ee195b9af"
-    sha256 mojave:        "cd242392d31ef7a597f520713742cb25e4c02f0e46ed5c8306f9a080746ae511"
-    sha256 x86_64_linux:  "c194073b1f4f3a5a0ff10e1ed0c25256b90dfce0a40425a48364665d1dd5f4e3"
+    sha256 arm64_big_sur: "1c234b2a7dd7fc511b344ccfb34247fb6860b2be0d2b13bc9bc6f1b3e0d0fe9a"
+    sha256 big_sur:       "ae01c735384d081f6a725143afa961815db81cd262b311731b0caf39e393d21e"
+    sha256 catalina:      "56abd3c5b8d1156efac49f97781cb9f96e16de970c61df4eee4d7f086d2b3ba8"
+    sha256 mojave:        "cf5437b07a943809b93c3420f437ad0a1a4b43320e054e25ac6fc1df1ece9c20"
+    sha256 x86_64_linux:  "0eb285b819e60dc969b2fb8ad8b9ece9c5fbfb3359ddee06ad0ff458fe7053c0"
   end
 
   depends_on "glib" => :build
@@ -43,9 +42,8 @@ class Gegl < Formula
       -Ddocs=false
       -Dcairo=disabled
       -Djasper=disabled
-      -Dmfpack=disabled
+      -Dumfpack=disabled
       -Dlibspiro=disabled
-      --wrap-mode=default
       --force-fallback-for=libnsgif,poly2tri-c
     ]
 

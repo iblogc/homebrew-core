@@ -4,7 +4,7 @@ class BoostPython3 < Formula
   url "https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.bz2"
   sha256 "f0397ba6e982c4450f27bf32a2a83292aba035b827a5623a14636ea583318c41"
   license "BSL-1.0"
-  head "https://github.com/boostorg/boost.git"
+  head "https://github.com/boostorg/boost.git", branch: "master"
 
   livecheck do
     formula "boost"
@@ -46,14 +46,13 @@ class BoostPython3 < Formula
 
     pyver = Language::Python.major_minor_version Formula["python@3.9"].opt_bin/"python3"
     py_prefix = Formula["python@3.9"].opt_frameworks/"Python.framework/Versions/#{pyver}"
-    on_linux do
-      py_prefix = Formula["python@3.9"].opt_prefix
-    end
+    py_prefix = Formula["python@3.9"].opt_prefix if OS.linux?
 
     # Force boost to compile with the desired compiler
-    compiler_text = "using darwin : : #{ENV.cxx} ;"
-    on_linux do
-      compiler_text = "using gcc : : #{ENV.cxx} ;"
+    compiler_text = if OS.mac?
+      "using darwin : : #{ENV.cxx} ;"
+    else
+      "using gcc : : #{ENV.cxx} ;"
     end
     (buildpath/"user-config.jam").write <<~EOS
       #{compiler_text}

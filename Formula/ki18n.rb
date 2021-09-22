@@ -1,8 +1,8 @@
 class Ki18n < Formula
   desc "KDE Gettext-based UI text internationalization"
   homepage "https://api.kde.org/frameworks/ki18n/html/index.html"
-  url "https://download.kde.org/stable/frameworks/5.84/ki18n-5.84.0.tar.xz"
-  sha256 "603f1ee0d1e74afb0a2cc83a1415c126c59de9c977ec1632acc34fb76e976094"
+  url "https://download.kde.org/stable/frameworks/5.86/ki18n-5.86.0.tar.xz"
+  sha256 "b8d9ea53b75e79a5b003af89771371d0748cdfe9dd0b3ae7209aa959ce41bcd1"
   license all_of: [
     "BSD-3-Clause",
     "LGPL-2.0-or-later",
@@ -11,10 +11,10 @@ class Ki18n < Formula
   head "https://invent.kde.org/frameworks/ki18n.git"
 
   bottle do
-    sha256 cellar: :any, arm64_big_sur: "65cceabd49aa5f2158639452e3a656151dffcccc2fc7441b37c497de83aab75f"
-    sha256 cellar: :any, big_sur:       "a0276a67d4305be53b7d443478a3542c4fe536223d90902589f98c58f5ef242e"
-    sha256 cellar: :any, catalina:      "2512273eb0214ad30833712e379432e895fa5b456e22415ecf5a38c0f3c6777b"
-    sha256 cellar: :any, mojave:        "8399cf3a576f40a9522dd528cca2535064f47af10653e7047338f641ae2914e7"
+    sha256 cellar: :any, arm64_big_sur: "d7308d32a59b56fff442009ee28270bc9038139589984bcf1500aa0aa61052fc"
+    sha256 cellar: :any, big_sur:       "959d67afee36f3a5ee45f123331816e9f6bf1d408bd70ae40d06c8a80741df9c"
+    sha256 cellar: :any, catalina:      "b7ec05e56eea61f52e881b0237fdfeb306c00e609ad7903802fce43e7d717d4d"
+    sha256 cellar: :any, mojave:        "770b3a4fdc60d190c762fdc9c67880e7d2afdd3d3c4b81d0b5116c2308914923"
   end
 
   depends_on "cmake" => [:build, :test]

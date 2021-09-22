@@ -32,16 +32,19 @@ class Dpkg < Formula
   uses_from_macos "bzip2"
   uses_from_macos "zlib"
 
+  on_linux do
+    keg_only "not linked to prevent conflicts with system dpkg"
+  end
+
   patch :DATA
 
   def install
     # We need to specify a recent gnutar, otherwise various dpkg C programs will
     # use the system "tar", which will fail because it lacks certain switches.
-    on_macos do
-      ENV["TAR"] = Formula["gnu-tar"].opt_bin/"gtar"
-    end
-    on_linux do
-      ENV["TAR"] = Formula["gnu-tar"].opt_bin/"tar"
+    ENV["TAR"] = if OS.mac?
+      Formula["gnu-tar"].opt_bin/"gtar"
+    else
+      Formula["gnu-tar"].opt_bin/"tar"
     end
 
     # Since 1.18.24 dpkg mandates the use of GNU patch to prevent occurrences

@@ -3,17 +3,17 @@ class GalleryDl < Formula
 
   desc "Command-line downloader for image-hosting site galleries and collections"
   homepage "https://github.com/mikf/gallery-dl"
-  url "https://files.pythonhosted.org/packages/33/ee/eaf7086334b81915e4afec29ee64eaf1fe5f3f7779550dcddf309f933920/gallery_dl-1.18.2.tar.gz"
-  sha256 "786772ce774929ef1ba64d8394dbab329a72447fd8b930968bc1fb0aacdba567"
+  url "https://files.pythonhosted.org/packages/ca/42/5c60a13bdc5ba7d07d2a5305a0bfa4191d3461df69d0552f8a9db6b5004e/gallery_dl-1.18.4.tar.gz"
+  sha256 "bdb84706fdde867fe2ee11c74c8c51af4e560399bd5fa562f19bfcaf8fc0dac9"
   license "GPL-2.0-only"
   head "https://github.com/mikf/gallery-dl.git"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "4140df643ee4b06c7deb2fa8e02e30d67464e1232b8a189c4fbe2779acc5074b"
-    sha256 cellar: :any_skip_relocation, big_sur:       "54a4641ae87f3cf68557518c66e605329b4b2051c9ddd3c04b38ea451c66f02b"
-    sha256 cellar: :any_skip_relocation, catalina:      "54a4641ae87f3cf68557518c66e605329b4b2051c9ddd3c04b38ea451c66f02b"
-    sha256 cellar: :any_skip_relocation, mojave:        "54a4641ae87f3cf68557518c66e605329b4b2051c9ddd3c04b38ea451c66f02b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "93980b3dd3676560af5f30b17269ee9aa806e86acddd79c55732deebd70d8789"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "97d79a12664169507649a56df63163d2aa9b57cdd13311d42ae3ebbcb7d0c9d1"
+    sha256 cellar: :any_skip_relocation, big_sur:       "9fecce51c8492db514b4d780179459eb9132072cd0e137d90d7be4088903246d"
+    sha256 cellar: :any_skip_relocation, catalina:      "9fecce51c8492db514b4d780179459eb9132072cd0e137d90d7be4088903246d"
+    sha256 cellar: :any_skip_relocation, mojave:        "9fecce51c8492db514b4d780179459eb9132072cd0e137d90d7be4088903246d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dad9642fc82ae8e84dbaddd344bc28594ab356d7166c924f13dcb4fc079fd33a"
   end
 
   depends_on "python@3.9"
@@ -24,8 +24,8 @@ class GalleryDl < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/37/fd/05a04d7e14548474d30d90ad0db5d90ee2ba55cd967511a354cf88b534f1/charset-normalizer-2.0.3.tar.gz"
-    sha256 "c46c3ace2d744cfbdebceaa3c19ae691f53ae621b39fd7570f59d14fb7f2fd12"
+    url "https://files.pythonhosted.org/packages/e7/4e/2af0238001648ded297fb54ceb425ca26faa15b341b4fac5371d3938666e/charset-normalizer-2.0.4.tar.gz"
+    sha256 "f23667ebe1084be45f6ae0538e4a5a865206544097e4e8bbcacf42cd02a348f3"
   end
 
   resource "idna" do

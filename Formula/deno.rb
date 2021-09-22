@@ -1,17 +1,16 @@
 class Deno < Formula
   desc "Secure runtime for JavaScript and TypeScript"
   homepage "https://deno.land/"
-  url "https://github.com/denoland/deno/releases/download/v1.12.2/deno_src.tar.gz"
-  sha256 "4ac5a1a29d8490220c5c35eb6eb35675eb01abf3022a1fb88e4620d7ba481734"
+  url "https://github.com/denoland/deno/releases/download/v1.14.0/deno_src.tar.gz"
+  sha256 "56f370825f019e4bdb95f354a49576c057f90ef1cc07b7491566763b2147edc6"
   license "MIT"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "ad64ee531b91a5bf9cd12736ac9450302be7c84ce8c4e6f0f972105fb9756828"
-    sha256 cellar: :any_skip_relocation, big_sur:       "e5a5631f621412fb7a8baf9260734b0b3aebb4ac6c5069543321490325cff552"
-    sha256 cellar: :any_skip_relocation, catalina:      "3e37ce38c1db34d978e6d85f6bb803194aee3b6fca00a0dff2bc14679b62f5d5"
-    sha256 cellar: :any_skip_relocation, mojave:        "23bce5c3d3fa94abb71a96ad0241a97a9a888f871b1b879575b2c5f77be06481"
-    sha256                               x86_64_linux:  "9132f21ca9892682056a4a6718ee9366fed446e064f5b96390cdebcb2882611c"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "c7bb0e7f76f00ae210844079f036b82037b85545ea51b9aef55f458c5ef4255e"
+    sha256 cellar: :any_skip_relocation, big_sur:       "d9589b60d1b5cf3ed83e84f3f789c60ad345c52056aae42d80267d6e497d113a"
+    sha256 cellar: :any_skip_relocation, catalina:      "9e9f0f8ced1e45614bd5dff7c78ae4f0aac0150f47573e01e96aa12835789407"
+    sha256 cellar: :any_skip_relocation, mojave:        "e3265b4cc0cf207347b2676a10054d517c3b9ee98bfec7cb28be5df4a6ce10b0"
+    sha256                               x86_64_linux:  "210c7b3301da0bd3e5f800b53ed667fcb8a4918b4a9debe3dabe052c149bc026"
   end
 
   depends_on "llvm" => :build
@@ -43,9 +42,9 @@ class Deno < Formula
   end
 
   def install
-    on_macos do
+    if OS.mac? && (MacOS.version < :mojave)
       # Overwrite Chromium minimum SDK version of 10.15
-      ENV["FORCE_MAC_SDK_MIN"] = MacOS.version if MacOS.version < :mojave
+      ENV["FORCE_MAC_SDK_MIN"] = MacOS.version
     end
 
     # env args for building a release build with our python3, ninja and gn

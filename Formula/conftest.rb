@@ -1,23 +1,32 @@
 class Conftest < Formula
   desc "Test your configuration files using Open Policy Agent"
   homepage "https://www.conftest.dev/"
-  url "https://github.com/open-policy-agent/conftest/archive/v0.26.0.tar.gz"
-  sha256 "205e52e2e5255d9f24fda3ced8457b595e9ff8a3ed226f0eda23412f2f20ec4e"
+  url "https://github.com/open-policy-agent/conftest/archive/v0.28.1.tar.gz"
+  sha256 "7db4d07321afe713b735c347b69a53adee193c728fe655ab2027c94439c53a5d"
   license "Apache-2.0"
-  head "https://github.com/open-policy-agent/conftest.git"
+  head "https://github.com/open-policy-agent/conftest.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "58bb6fc10b6d2728337d0ce92c17869973e5a2e8ac182cfae9e141bc0f0cf91d"
-    sha256 cellar: :any_skip_relocation, big_sur:       "657d8aabc772e7b3b0646f0417ae76348464e05f5d42e171cde8233270166bb7"
-    sha256 cellar: :any_skip_relocation, catalina:      "ad5139e20e4fec63d3bead139dd235ec3028af36ae6cab43333456ed277d4b02"
-    sha256 cellar: :any_skip_relocation, mojave:        "b8f0738aa71f62cdf16aeed64b620794b054c0ed402567a6fc21c49a2ea8bd27"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "57e1b7e0b989eeec12879e7fe968f8de7c3cdebf7ca0d0b56c96a770801eafc0"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "14e2418aed581f427b19637dc5190ac121b8be4f69e569e6a5a26e3fd744286d"
+    sha256 cellar: :any_skip_relocation, big_sur:       "67813dba27b436619a69495e7313ed0b7bf8f292f627d13e2e446463424318c0"
+    sha256 cellar: :any_skip_relocation, catalina:      "d6d0f3239fe2e0103bcb80004ff38b8cb80dba708c6acec73ff35e6142840317"
+    sha256 cellar: :any_skip_relocation, mojave:        "3a624ac7e19423d2ee7bac2db0b41c8308b24a43ba1eab6e7e0518f263652278"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6f1990a8c26abf666a468648eb1d5ee7886a647b4129dfa46aadba5cb618b407"
   end
 
   depends_on "go" => :build
 
   def install
     system "go", "build", *std_go_args(ldflags: "-X github.com/open-policy-agent/conftest/internal/commands.version=#{version}")
+
+    bash_output = Utils.safe_popen_read(bin/"conftest", "completion", "bash")
+    (bash_completion/"conftest").write bash_output
+
+    zsh_output = Utils.safe_popen_read(bin/"conftest", "completion", "zsh")
+    (zsh_completion/"_conftest").write zsh_output
+
+    fish_output = Utils.safe_popen_read(bin/"conftest", "completion", "fish")
+    (fish_completion/"conftest.fish").write fish_output
   end
 
   test do

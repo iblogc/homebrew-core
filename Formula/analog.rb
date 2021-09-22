@@ -26,17 +26,16 @@ class Analog < Formula
   uses_from_macos "zlib"
 
   def install
-    args = %W[
-      CC=#{ENV.cc}
-      CFLAGS=#{ENV.cflags}
-      DEFS='-DLANGDIR="#{pkgshare}/lang/"'\ -DHAVE_ZLIB
-      LIBS=-lz\ -lm
+    args = [
+      "CC=#{ENV.cc}",
+      "CFLAGS=#{ENV.cflags}",
+      %Q(DEFS='-DLANGDIR="#{pkgshare}/lang/"' -DHAVE_ZLIB),
+      "LIBS=-lz -lm",
     ]
-    on_macos do
-      args << "OS=OSX"
-    end
-    on_linux do
-      args << "OS=UNIX"
+    args << if OS.mac?
+      "OS=OSX"
+    else
+      "OS=UNIX"
     end
     system "make", *args
 

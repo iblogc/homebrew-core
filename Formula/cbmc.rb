@@ -2,47 +2,45 @@ class Cbmc < Formula
   desc "C Bounded Model Checker"
   homepage "https://www.cprover.org/cbmc/"
   url "https://github.com/diffblue/cbmc.git",
-      tag:      "cbmc-5.36.0",
-      revision: "25ed175d8d40fb3bfb82426028d05718fb204499"
+      tag:      "cbmc-5.39.2",
+      revision: "8e4b5c6b4f13ca62fa8674eb006d16c8e4ba72c4"
   license "BSD-4-Clause"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "b01f49cc87b0ece5746cfc0b9c0630ccb70f4df4bdab04c95116b63984d00a61"
-    sha256 cellar: :any_skip_relocation, big_sur:       "c00f9db66a19055bd0e3ae8b8cbf226a361289f022cb1318ce34d961a292fbb3"
-    sha256 cellar: :any_skip_relocation, catalina:      "0c744188eac8733038a7df384a4a1481f8d8ad4daaa28f24c66e224da1d158da"
-    sha256 cellar: :any_skip_relocation, mojave:        "c14b80955d52fe3692f56a336595b2e10022983c9f88896ab4d50e328b519534"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "462936c1f44b5a0e13d3e094ad45fb01a3f349054a95a44c20fcbd69630f0be7"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "32646f8dfef5ee84202fe954b61d0853669291e6d16c641b81dac7db48754221"
+    sha256 cellar: :any_skip_relocation, big_sur:       "0b12174446198f981eb02341e8965d4a887fb5e7454b4fd9d5332fff0b83c248"
+    sha256 cellar: :any_skip_relocation, catalina:      "ec08e3408a045179db573579a4461a75a5ccfce00ec03d995a65acfe7bac44dd"
+    sha256 cellar: :any_skip_relocation, mojave:        "02426b3c2597e66701a5a45bab0414b171940d218b2685d271375f608a06d58e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "733cebd4483de66a342f34a50d3f7a6efe7e80dcc7132317533c8a752b33619e"
   end
 
   depends_on "cmake" => :build
   depends_on "maven" => :build
-  depends_on "openjdk" => :build
+  # Java front-end fails to build with openjdk>=17
+  depends_on "openjdk@11" => :build
 
   uses_from_macos "bison" => :build
   uses_from_macos "flex" => :build
 
   on_linux do
-    depends_on "gcc" => :build
+    depends_on "gcc"
   end
 
   fails_with gcc: "5"
 
   def install
+    ENV["JAVA_HOME"] = Language::Java.java_home("11")
+
     args = []
-
     # Workaround borrowed from https://github.com/diffblue/cbmc/issues/4956
-    on_macos { args << "-DCMAKE_C_COMPILER=/usr/bin/clang" }
-    # Java front-end fails to build on ARM
-    args << "-DWITH_JBMC=OFF" if Hardware::CPU.arm?
+    args << "-DCMAKE_C_COMPILER=/usr/bin/clang" if OS.mac?
 
-    mkdir "build" do
-      system "cmake", "..", *args, *std_cmake_args
-      system "cmake", "--build", "."
-      system "make", "install"
-    end
+    system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
 
     # lib contains only `jar` files
-    libexec.install lib unless Hardware::CPU.arm?
+    libexec.install lib
   end
 
   test do

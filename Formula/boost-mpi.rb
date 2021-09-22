@@ -4,7 +4,7 @@ class BoostMpi < Formula
   url "https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.bz2"
   sha256 "f0397ba6e982c4450f27bf32a2a83292aba035b827a5623a14636ea583318c41"
   license "BSL-1.0"
-  head "https://github.com/boostorg/boost.git"
+  head "https://github.com/boostorg/boost.git", branch: "master"
 
   livecheck do
     formula "boost"
@@ -42,10 +42,9 @@ class BoostMpi < Formula
     args << "cxxflags=-stdlib=libc++" << "linkflags=-stdlib=libc++" if ENV.compiler == :clang
 
     open("user-config.jam", "a") do |file|
-      on_macos do
+      if OS.mac?
         file.write "using darwin : : #{ENV.cxx} ;\n"
-      end
-      on_linux do
+      else
         file.write "using gcc : : #{ENV.cxx} ;\n"
       end
       file.write "using mpi ;\n"
@@ -61,7 +60,7 @@ class BoostMpi < Formula
     lib.install Dir["install-mpi/lib/*mpi*"]
     (lib/"cmake").install Dir["install-mpi/lib/cmake/*mpi*"]
 
-    on_macos do
+    if OS.mac?
       # libboost_mpi links to libboost_serialization, which comes from the main boost formula
       boost = Formula["boost"]
       MachO::Tools.change_install_name("#{lib}/libboost_mpi-mt.dylib",
